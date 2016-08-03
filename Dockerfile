@@ -17,4 +17,4 @@ RUN bash -c "cd /temp/lua&&make&&make install"
 WORKDIR /temp/tengine/
 RUN ./configure --prefix=/usr/local/tengine --with-ld-opt="-Wl,-rpath,/usr/local/lib" --add-module=/temp/nginx_lua --add-module=/temp/ngx_dev &&make&&make install
 WORKDIR /usr/local/tengine/
-ENTRYPOINT ["nginx","-g","daemon off"]
+ENTRYPOINT ["/usr/local/tengine/sbin/nginx","-g","daemon off;"]
